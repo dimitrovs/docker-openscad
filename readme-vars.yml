@@ -1,12 +1,12 @@
 ---
 
 # project information
-project_name: orcaslicer
-project_url: "https://github.com/SoftFever/OrcaSlicer"
-project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/orcaslicer-logo.png"
-project_blurb: "[Orca Slicer]({{ project_url }}) is an open source slicer for FDM printers. OrcaSlicer is fork of Bambu Studio, it was previously known as BambuStudio-SoftFever, Bambu Studio is forked from PrusaSlicer by Prusa Research, which is from Slic3r by Alessandro Ranellucci and the RepRap community"
+project_name: openscad
+project_url: "https://openscad.org"
+project_logo: "https://raw.githubusercontent.com/openscad/openscad/master/icons/512x512/openscad.png"
+project_blurb: "[OpenSCAD]({{ project_url }}) is software for creating solid 3D CAD objects. It is free software and available for Linux/UNIX, MS Windows and Mac OS X. Unlike most free software for creating 3D models, it does not focus on the artistic aspects of 3D modelling but instead on the CAD aspects. Thus it might be the application you are looking for when you are planning to create 3D models of machine parts but pretty sure is not what you are looking for when you are more interested in creating computer-animated movies."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-project_categories: "3D Printing"
+project_categories: "3D Modeling"
 project_blurb_optional_extras_enabled: false
 # supported architectures
 available_architectures:
@@ -21,8 +21,8 @@ param_volumes:
   - {vol_path: "/config", vol_host_path: "/path/to/config", desc: "Users home directory in the container, stores program settings and files."}
 param_usage_include_ports: true
 param_ports:
-  - {external_port: "3000", internal_port: "3000", port_desc: "Orca Slicer desktop gui HTTP, must be proxied."}
-  - {external_port: "3001", internal_port: "3001", port_desc: "Orca Slicer desktop gui HTTPS."}
+  - {external_port: "3000", internal_port: "3000", port_desc: "OpenSCAD desktop gui HTTP, must be proxied."}
+  - {external_port: "3001", internal_port: "3001", port_desc: "OpenSCAD desktop gui HTTPS."}
 opt_custom_params:
   - {name: "shm-size", name_compose: "shm_size", value: "1gb", desc: "We set this to 1 gig to prevent modern web browsers from crashing"}
 # Selkies blurb settings
@@ -36,7 +36,7 @@ app_setup_block: |
   * https://yourhost:3001/
 # init diagram
 init_diagram: |
-  "orcaslicer:latest": {
+  "openscad:latest": {
     docker-mods
     base {
       fix-attr +\nlegacy cont-init
@@ -103,9 +103,10 @@ init_diagram: |
   Base Images: {
     "baseimage-selkies:ubuntunoble" <- "baseimage-ubuntu:noble"
   }
-  "orcaslicer:latest" <- Base Images
+  "openscad:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "21.11.25:", desc: "Replace OrcaSlicer with OpenSCAD."}
   - {date: "15.09.25:", desc: "Rebase to Ubuntu Noble and Selkies, HTTPS is now required."}
   - {date: "10.02.24:", desc: "Update Readme with new env vars and ingest proper PWA icon."}
   - {date: "15.11.23:", desc: "Initial release."}

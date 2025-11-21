@@ -1,28 +1,19 @@
 ---
 
 # jenkins variables
-project_name: docker-orcaslicer
-external_type: github_stable
+project_name: docker-openscad
+external_type: na
 release_type: stable
 release_tag: latest
 ls_branch: master
-external_artifact_check: |
-  assets=$(curl -u "${{ '{{' }} secrets.CR_USER {{ '}}' }}:${{ '{{' }} secrets.CR_PAT {{ '}}' }}" -sX GET "https://api.github.com/repos/SoftFever/OrcaSlicer/releases/tags/${EXT_RELEASE}" | jq -r '.assets[].browser_download_url')
-  if grep -q "OrcaSlicer_Linux_AppImage_Ubuntu2404" <<< "${assets}"; then
-    artifacts_found="true"
-  else
-    artifacts_found="false"
-  fi
 repo_vars:
-  - EXT_USER = 'SoftFever'
-  - EXT_REPO = 'OrcaSlicer'
-  - BUILD_VERSION_ARG = 'ORCASLICER_VERSION'
+  - BUILD_VERSION_ARG = 'OPENSCAD_VERSION'
   - LS_USER = 'linuxserver'
-  - LS_REPO = 'docker-orcaslicer'
-  - CONTAINER_NAME = 'orcaslicer'
-  - DOCKERHUB_IMAGE = 'linuxserver/orcaslicer'
-  - DEV_DOCKERHUB_IMAGE = 'lsiodev/orcaslicer'
-  - PR_DOCKERHUB_IMAGE = 'lspipepr/orcaslicer'
+  - LS_REPO = 'docker-openscad'
+  - CONTAINER_NAME = 'openscad'
+  - DOCKERHUB_IMAGE = 'linuxserver/openscad'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/openscad'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/openscad'
   - DIST_IMAGE = 'ubuntu'
   - MULTIARCH = 'false'
   - CI = 'true'
