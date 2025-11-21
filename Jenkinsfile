@@ -19,15 +19,15 @@ pipeline {
     DOCKERHUB_TOKEN=credentials('docker-hub-ci-pat')
     QUAYIO_API_TOKEN=credentials('quayio-repo-api-token')
     GIT_SIGNING_KEY=credentials('484fbca6-9a4f-455e-b9e3-97ac98785f5f')
-    EXT_USER = 'SoftFever'
-    EXT_REPO = 'OrcaSlicer'
-    BUILD_VERSION_ARG = 'ORCASLICER_VERSION'
+    EXT_USER = 'openscad'
+    EXT_REPO = 'openscad'
+    BUILD_VERSION_ARG = 'OPENSCAD_VERSION'
     LS_USER = 'linuxserver'
-    LS_REPO = 'docker-orcaslicer'
-    CONTAINER_NAME = 'orcaslicer'
-    DOCKERHUB_IMAGE = 'linuxserver/orcaslicer'
-    DEV_DOCKERHUB_IMAGE = 'lsiodev/orcaslicer'
-    PR_DOCKERHUB_IMAGE = 'lspipepr/orcaslicer'
+    LS_REPO = 'docker-openscad'
+    CONTAINER_NAME = 'openscad'
+    DOCKERHUB_IMAGE = 'linuxserver/openscad'
+    DEV_DOCKERHUB_IMAGE = 'lsiodev/openscad'
+    PR_DOCKERHUB_IMAGE = 'lspipepr/openscad'
     DIST_IMAGE = 'ubuntu'
     MULTIARCH = 'false'
     CI = 'true'
@@ -592,16 +592,16 @@ pipeline {
         sh "docker buildx build \
           --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
           --label \"org.opencontainers.image.authors=linuxserver.io\" \
-          --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-orcaslicer/packages\" \
-          --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-orcaslicer\" \
-          --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-orcaslicer\" \
+          --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-openscad/packages\" \
+          --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-openscad\" \
+          --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-openscad\" \
           --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-ls${LS_TAG_NUMBER}\" \
           --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
           --label \"org.opencontainers.image.vendor=linuxserver.io\" \
           --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
           --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
-          --label \"org.opencontainers.image.title=Orcaslicer\" \
-          --label \"org.opencontainers.image.description=[Orca Slicer](https://github.com/SoftFever/OrcaSlicer) is an open source slicer for FDM printers. OrcaSlicer is fork of Bambu Studio, it was previously known as BambuStudio-SoftFever, Bambu Studio is forked from PrusaSlicer by Prusa Research, which is from Slic3r by Alessandro Ranellucci and the RepRap community\" \
+          --label \"org.opencontainers.image.title=OpenSCAD\" \
+          --label \"org.opencontainers.image.description=[OpenSCAD](https://openscad.org/) is a free software for creating solid 3D CAD objects. It is a script-only based modeller that uses its own description language; parts can be previewed, but cannot be interactively selected or modified by mouse in the 3D view. An OpenSCAD script specifies geometric primitives (such as spheres, boxes, cylinders, etc.) and defines how they are modified and combined (e.g., by intersection, difference, or union) to form a 3D model.\" \
           --no-cache --pull -t ${IMAGE}:${META_TAG} --platform=linux/amd64 \
           --provenance=true --sbom=true --builder=container --load \
           --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
@@ -661,16 +661,16 @@ pipeline {
             sh "docker buildx build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=linuxserver.io\" \
-              --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-orcaslicer/packages\" \
-              --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-orcaslicer\" \
-              --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-orcaslicer\" \
+              --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-openscad/packages\" \
+              --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-openscad\" \
+              --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-openscad\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-ls${LS_TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=linuxserver.io\" \
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
-              --label \"org.opencontainers.image.title=Orcaslicer\" \
-              --label \"org.opencontainers.image.description=[Orca Slicer](https://github.com/SoftFever/OrcaSlicer) is an open source slicer for FDM printers. OrcaSlicer is fork of Bambu Studio, it was previously known as BambuStudio-SoftFever, Bambu Studio is forked from PrusaSlicer by Prusa Research, which is from Slic3r by Alessandro Ranellucci and the RepRap community\" \
+              --label \"org.opencontainers.image.title=OpenSCAD\" \
+              --label \"org.opencontainers.image.description=[OpenSCAD](https://openscad.org/) is a free software for creating solid 3D CAD objects. It is a script-only based modeller that uses its own description language; parts can be previewed, but cannot be interactively selected or modified by mouse in the 3D view. An OpenSCAD script specifies geometric primitives (such as spheres, boxes, cylinders, etc.) and defines how they are modified and combined (e.g., by intersection, difference, or union) to form a 3D model.\" \
               --no-cache --pull -t ${IMAGE}:amd64-${META_TAG} --platform=linux/amd64 \
               --provenance=true --sbom=true --builder=container --load \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
@@ -723,16 +723,16 @@ pipeline {
             sh "docker buildx build \
               --label \"org.opencontainers.image.created=${GITHUB_DATE}\" \
               --label \"org.opencontainers.image.authors=linuxserver.io\" \
-              --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-orcaslicer/packages\" \
-              --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-orcaslicer\" \
-              --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-orcaslicer\" \
+              --label \"org.opencontainers.image.url=https://github.com/linuxserver/docker-openscad/packages\" \
+              --label \"org.opencontainers.image.documentation=https://docs.linuxserver.io/images/docker-openscad\" \
+              --label \"org.opencontainers.image.source=https://github.com/linuxserver/docker-openscad\" \
               --label \"org.opencontainers.image.version=${EXT_RELEASE_CLEAN}-ls${LS_TAG_NUMBER}\" \
               --label \"org.opencontainers.image.revision=${COMMIT_SHA}\" \
               --label \"org.opencontainers.image.vendor=linuxserver.io\" \
               --label \"org.opencontainers.image.licenses=GPL-3.0-only\" \
               --label \"org.opencontainers.image.ref.name=${COMMIT_SHA}\" \
-              --label \"org.opencontainers.image.title=Orcaslicer\" \
-              --label \"org.opencontainers.image.description=[Orca Slicer](https://github.com/SoftFever/OrcaSlicer) is an open source slicer for FDM printers. OrcaSlicer is fork of Bambu Studio, it was previously known as BambuStudio-SoftFever, Bambu Studio is forked from PrusaSlicer by Prusa Research, which is from Slic3r by Alessandro Ranellucci and the RepRap community\" \
+              --label \"org.opencontainers.image.title=OpenSCAD\" \
+              --label \"org.opencontainers.image.description=[OpenSCAD](https://openscad.org/) is a free software for creating solid 3D CAD objects. It is a script-only based modeller that uses its own description language; parts can be previewed, but cannot be interactively selected or modified by mouse in the 3D view. An OpenSCAD script specifies geometric primitives (such as spheres, boxes, cylinders, etc.) and defines how they are modified and combined (e.g., by intersection, difference, or union) to form a 3D model.\" \
               --no-cache --pull -f Dockerfile.aarch64 -t ${IMAGE}:arm64v8-${META_TAG} --platform=linux/arm64 \
               --provenance=true --sbom=true --builder=container --load \
               --build-arg ${BUILD_VERSION_ARG}=${EXT_RELEASE} --build-arg VERSION=\"${VERSION_TAG}\" --build-arg BUILD_DATE=${GITHUB_DATE} ."
