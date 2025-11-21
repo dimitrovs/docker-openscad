@@ -23,7 +23,7 @@ RUN \
   apt-get update && \
   DEBIAN_FRONTEND=noninteractive \
   apt-get install --no-install-recommends -y \
-    firefox \
+
     openscad && \
   localedef -i en_GB -f UTF-8 en_GB.UTF-8 && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
