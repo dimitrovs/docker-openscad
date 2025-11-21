@@ -4,7 +4,7 @@
 project_name: openscad
 project_url: "https://openscad.org"
 project_logo: "https://raw.githubusercontent.com/openscad/openscad/master/icons/512x512/openscad.png"
-project_blurb: "[OpenSCAD]({{ project_url }}) is software for creating solid 3D CAD objects. It is free software and available for Linux/UNIX, MS Windows and Mac OS X. Unlike most free software for creating 3D models, it does not focus on the artistic aspects of 3D modelling but instead on the CAD aspects. Thus it might be the application you are looking for when you are planning to create 3D models of machine parts but pretty sure is not what you are looking for when you are more interested in creating computer-animated movies."
+project_blurb: "[OpenSCAD]({{ project_url }}) is a free software for creating solid 3D CAD objects. It is a script-only based modeller that uses its own description language; parts can be previewed, but cannot be interactively selected or modified by mouse in the 3D view. An OpenSCAD script specifies geometric primitives (such as spheres, boxes, cylinders, etc.) and defines how they are modified and combined (e.g., by intersection, difference, or union) to form a 3D model."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
 project_categories: "3D Modeling"
 project_blurb_optional_extras_enabled: false
