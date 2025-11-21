@@ -16,7 +16,7 @@ ENV TITLE=OpenSCAD \
 
 RUN \
   echo "**** add icon ****" && \
-  curl -o \
+  curl -k -o \
     /usr/share/selkies/www/icon.png \
     https://raw.githubusercontent.com/openscad/openscad/master/icons/512x512/openscad.png && \
   echo "**** install packages ****" && \
