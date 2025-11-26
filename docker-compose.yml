@@ -1,0 +1,13 @@
+services:
+  openscad:
+    build: .
+    container_name: openscad
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Toronto
+    volumes:
+      - ./config:/config
+    ports:
+      - "6901:3001"
+    restart: unless-stopped

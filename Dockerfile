@@ -14,6 +14,15 @@ ENV TITLE=OpenSCAD \
     SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
     NO_GAMEPAD=true
 
+RUN apt-get update && \
+    apt-get install -y fontconfig && \
+    mkdir -p /usr/local/share/fonts/custom
+
+COPY fonts/*.ttf /usr/local/share/fonts/custom/
+COPY fonts/*.otf /usr/local/share/fonts/custom/
+
+RUN fc-cache -f -v
+
 RUN \
   echo "**** add icon ****" && \
   curl -k -o \
